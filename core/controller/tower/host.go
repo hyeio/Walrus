@@ -288,6 +288,15 @@ func CreateHostCron(c *gin.Context) {
 			MySQLTable:        inputs["mysqlTable"],
 			MySQLOptions:      inputs["mysqlOptions"],
 
+			// PostgreSQL
+			PostgreSQLHost:     inputs["postgreSQLHost"],
+			PostgreSQLPort:     inputs["postgreSQLPort"],
+			PostgreSQLUsername: inputs["postgreSQLUsername"],
+			PostgreSQLPassword: inputs["postgreSQLPassword"],
+			PostgreSQLDatabase: inputs["postgreSQLDatabase"],
+			PostgreSQLTable:    inputs["postgreSQLTable"],
+			PostgreSQLOptions:  inputs["postgreSQLOptions"],
+
 			// SQLite
 			SQLitePath: inputs["sqlitePath"],
 		},
@@ -394,6 +403,15 @@ func UpdateHostCron(c *gin.Context) {
 	cronData.Request.MySQLDatabase = inputs["mysqlDatabase"]
 	cronData.Request.MySQLTable = inputs["mysqlTable"]
 	cronData.Request.MySQLOptions = inputs["mysqlOptions"]
+
+	// PostgreSQL
+	cronData.Request.PostgreSQLHost = inputs["postgreSQLHost"]
+	cronData.Request.PostgreSQLPort = inputs["postgreSQLPort"]
+	cronData.Request.PostgreSQLUsername = inputs["postgreSQLUsername"]
+	cronData.Request.PostgreSQLPassword = inputs["postgreSQLPassword"]
+	cronData.Request.PostgreSQLDatabase = inputs["postgreSQLDatabase"]
+	cronData.Request.PostgreSQLTable = inputs["postgreSQLTable"]
+	cronData.Request.PostgreSQLOptions = inputs["postgreSQLOptions"]
 
 	// SQLite
 	cronData.Request.SQLitePath = inputs["sqlitePath"]
@@ -531,6 +549,15 @@ func GetHostCron(c *gin.Context) {
 			"mysqlDatabase":     cronData.Request.MySQLDatabase,
 			"mysqlTable":        cronData.Request.MySQLTable,
 			"mysqlOptions":      cronData.Request.MySQLOptions,
+
+			// PostgreSQL
+			"postgreSQLHost":     cronData.Request.PostgreSQLHost,
+			"postgreSQLPort":     cronData.Request.PostgreSQLPort,
+			"postgreSQLUsername": cronData.Request.PostgreSQLUsername,
+			"postgreSQLPassword": cronData.Request.PostgreSQLPassword,
+			"postgreSQLDatabase": cronData.Request.PostgreSQLDatabase,
+			"postgreSQLTable":    cronData.Request.PostgreSQLTable,
+			"postgreSQLOptions":  cronData.Request.PostgreSQLOptions,
 
 			// SQLite
 			"sqlitePath": cronData.Request.SQLitePath,

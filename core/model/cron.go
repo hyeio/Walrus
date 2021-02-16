@@ -73,6 +73,14 @@ type Request struct {
 	MySQLTable        string `json:"mysqlTable"`
 	MySQLOptions      string `json:"mysqlOptions"`
 
+	PostgreSQLHost     string `json:"postgreSQLHost"`
+	PostgreSQLPort     string `json:"postgreSQLPort"`
+	PostgreSQLUsername string `json:"postgreSQLUsername"`
+	PostgreSQLPassword string `json:"postgreSQLPassword"`
+	PostgreSQLDatabase string `json:"postgreSQLDatabase"`
+	PostgreSQLTable    string `json:"postgreSQLTable"`
+	PostgreSQLOptions  string `json:"postgreSQLOptions"`
+
 	SQLitePath string `json:"sqlitePath"`
 }
 

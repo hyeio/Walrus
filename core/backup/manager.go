@@ -45,6 +45,7 @@ func (m *Manager) ProcessBackup(message module.BackupMessage) error {
 
 	// BackupDirectory
 	if message.Cron.Request.Type == model.BackupDirectory {
+
 		err := m.BackupDirectory(
 			message.Cron.Request.Directory,
 			localPath,
@@ -57,6 +58,7 @@ func (m *Manager) ProcessBackup(message module.BackupMessage) error {
 		defer util.DeleteFile(localPath)
 
 	} else if message.Cron.Request.Type == model.BackupSQLite {
+
 		err := m.BackupDirectory(
 			message.Cron.Request.SQLitePath,
 			localPath,
@@ -69,6 +71,7 @@ func (m *Manager) ProcessBackup(message module.BackupMessage) error {
 		defer util.DeleteFile(localPath)
 
 	} else if message.Cron.Request.Type == model.BackupMySQL {
+
 		mysql := &MySQL{
 			Host:         message.Cron.Request.MySQLHost,
 			Port:         message.Cron.Request.MySQLPort,
@@ -82,6 +85,29 @@ func (m *Manager) ProcessBackup(message module.BackupMessage) error {
 
 		err := m.BackupMySQL(
 			mysql,
+			localPath,
+		)
+
+		if err != nil {
+			return err
+		}
+
+		defer util.DeleteFile(localPath)
+
+	} else if message.Cron.Request.Type == model.BackupPostgreSQL {
+
+		postgresql := &PostgreSQL{
+			Host:     message.Cron.Request.PostgreSQLHost,
+			Port:     message.Cron.Request.PostgreSQLPort,
+			Username: message.Cron.Request.PostgreSQLUsername,
+			Password: message.Cron.Request.PostgreSQLPassword,
+			Database: message.Cron.Request.PostgreSQLDatabase,
+			Table:    message.Cron.Request.PostgreSQLTable,
+			Options:  message.Cron.Request.PostgreSQLOptions,
+		}
+
+		err := m.BackupPostgreSQL(
+			postgresql,
 			localPath,
 		)
 
